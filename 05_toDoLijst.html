@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To do list</title>
+
+  <style>
+    li{
+
+    }
+  </style>
+</head>
+<body>
+  <label for="title">Title</label><br>
+  <input type="text" id="title"><br><br>
+
+  <label for="todo">To Do</label><br>
+  <textarea name="todo" id="todo" cols="30" rows="10"></textarea><br>
+  <button onclick="addItem()">Toevoegen</button>
+
+  <ul id="list"></ul>
+
+  <script>
+    const toDoList = [];
+    const toDoItem = {};
+
+    const addItem = () => {
+      const inputTitle = document.querySelector("#title");
+      const inputToDo = document.querySelector("#todo");
+      const list = document.querySelector("#list");
+
+      //CREATE THE OBJECT
+      const toDoItem = {
+        title: inputTitle.value,
+        txt: inputToDo.value,
+      }
+
+      //ADD THE OBJECT TO ARRAY TODOLIST
+      toDoList.push(toDoItem);
+
+      let html = "";
+      for(let i = 0; i<toDoList.length; i++){
+        html +=  `<li><strong>${toDoList[i].title}</strong> ${toDoList[i].txt}</li>`;
+      }
+      
+      list.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
